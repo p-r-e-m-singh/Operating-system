@@ -1,0 +1,58 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 11.08.0 ] */
+
+/* [wxMaxima: title   start ]
+Practical - 7
+   [wxMaxima: title   end   ] */
+
+/* [wxMaxima: comment start ]
+Q1. x*U_x+y*U_y=U 
+
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+eq1:'diff(y,x)=y/x;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+ode2(eq1,y,x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+solve(y=c1*x,y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+psol:makelist(c1*x,c1,0,9);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+wxplot2d(psol,[x,-10,10]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+eq2: 'diff(u,x)=u/x;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+ode2(eq2,u,x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+solve(u=c2*x,u);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+psol2:makelist(c2*x,c2,-3,8);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+wxplot3d(-2*x,[x,-10,10],[y,-10,10]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(all)$
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

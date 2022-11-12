@@ -1,0 +1,71 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 11.08.0 ] */
+
+/* [wxMaxima: title   start ]
+PRACTICAL -6
+
+   [wxMaxima: title   end   ] */
+
+/* [wxMaxima: comment start ]
+Aim: To find the solution to find the solution to cauchy problem odf first order Partial Differential Equation.
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+Solve the4 Initiaol value problem : 3U_x +2U_y = 0; U(x,0)=sinx.
+
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(all)$
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+equation_1:'diff(y,x)=2/3;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+ode2(equation_1,y,x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+solve(y= (2*x)/3+c1,c1);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+eq2 : 'diff(u,x)=0;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+ode2(eq2,u,x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+solve(u=c2,c2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+u = f((3*y-2*x)/3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+u(x,y) = f((3*y-2*x)/3);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+u(x,0)=sin(x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+f(x)= sin(-3*x/2);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+'u(x,y)=u(x,y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+wxplot3d(u(x,y),[x,-10,10],[y,-7,7]);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

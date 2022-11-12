@@ -1,0 +1,90 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 11.08.0 ] */
+
+/* [wxMaxima: title   start ]
+PRACTICAL-8
+   [wxMaxima: title   end   ] */
+
+/* [wxMaxima: comment start ]
+Aim: To plot the integral surfaces of First Order Partial Differential Equations with intial data.
+
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: comment start ]
+Q1: Find the integral surfaces of the equation : U*U_x+U_y=1 with initial data x(s,0)=s^2/2,y(s,0)=s,U(s,0)=s.
+   [wxMaxima: comment end   ] */
+
+/* [wxMaxima: input   start ] */
+kill(all)$
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+b:'diff(y,t)=1;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+ode2(b,y,t);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+b:solve(y=t+c2,y);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+c:'diff(u,t)=1;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+ode2(c,u,t);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+c:solve(u=t+c3,u);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a:'diff(x,t)=u;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+ode2(a,x,t);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+a:solve(x=t*u+c1,x);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+subst([t=0,x=s^2/2],a);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+subst([t=0,y=s],b);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+subst([t=0,u=s],c);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+'x = t*(t+s)+s^2/2;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+'y = t+s;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+'u = t+s;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+wxdraw3d(color=green,parametric_surface(t*(t+s)+s^2/2,t+s,t+s,s,-20000,20000,t,-20000,20000),title="Integral Surface");
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+wxdraw3d([color=green,parametric_surface(t*(t+s)+s^2/2,t+s,t+s,s,-20000,20000,t,-20000,20000),color=red,parametric(s^2/2,s,s,s,-20000,20000)],title="Integral Surface with Initial Curve");
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
