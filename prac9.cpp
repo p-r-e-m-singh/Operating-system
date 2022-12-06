@@ -1,6 +1,6 @@
 #include<iostream>
 using namespace std;
-
+//No Arrival TIme required
 int main(){
     int nop;
     cout<<"ENter the nuber of Process: ";
