@@ -1,6 +1,6 @@
 #include<iostream>
 using namespace std;
-
+//No Arrival time + Priority required
 int main(){
     int tim= 0;
     int n;
