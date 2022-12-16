@@ -1,61 +1,44 @@
 #include<iostream>
+#include<stdio.h>
 using namespace std;
-
-int main(){
-    int nop,sum_wait=0,sum_tt=0;
-    cout<<"Enter the number of processes : ";cin>>nop;
-    int at[nop],bt[nop],rt[nop],remt=nop,pt[nop+1],p[nop];
-    for (int i = 0; i < nop; i++)
+int main()
+{
+    int i,j,n,time,sum_wait=0,sum_turnaround=0,smallest; 
+    cout<<"\nEnter number of Processes: ";
+    cin>>n;
+    int at[n],bt[n],pt[n],rt[n],remain;
+    remain=n;
+    cout<<"\nEnter arrival time, burst time and priority for:\n ";
+    for(i=0;i<n;i++)
     {
-        cout<<"Enter Process No : ";cin>>p[i];
-        cout<<"Enter the Arrival Time for "<<p[i]<<" process : ";cin>>at[i];
-        cout<<"Enter the Burst Time for "<<p[i]<<" process : ";cin>>bt[i];rt[i]=bt[i];
-        cout<<"Enter the Priority for "<<p[i]<<" process : ";cin>>pt[i];
-
-
+        cout<<"\nProcess "<<i+1<<": ";
+        cin>>at[i];
+        cin>>bt[i];
+        cin>>pt[i];
+        rt[i]=bt[i];
     }
-
-
-    for(int i=0;i<nop;i++){
-        int pos = i;
-        for(int j = i+1;j<nop;j++){
-            if(at[j]<at[pos]){
-                swap(at[j],at[pos]);
-                swap(pt[j],pt[pos]);
-                swap(p[pos],p[j]);
-                swap(bt[j],bt[pos]);
-            }
-        }
-    }
-    pt[nop]=nop+1; 
-    
-    for(int time=0;remt!=0;time++){
-        int smallest = nop ;
-        for(int i=0;i<nop;i++){
-            if(at[i]<=time && pt[i]<pt[smallest] && rt[i]>0){
+    pt[n-1]=n+1;
+    cout<<"\n\nProcess\t|Turnaround time|waiting time\n";
+    for(time=0;remain!=0;time++)
+    {
+        smallest=n-1;
+        for(i=0;i<n;i++)
+        {
+            if(at[i]<=time && pt[i]<pt[smallest] && rt[i]>0)
+            {
                 smallest=i;
             }
-            rt[smallest]--;
-            if(rt[smallest]==0){
-                remt--;
-                cout<<"P :"<<smallest+1<<"\t|\t"<<time+1-at[smallest]<<"\t\t|\t"<<time+1-at[smallest]-bt[smallest]<<endl;
-                sum_wait += time+1-at[smallest];
-                sum_tt += time+1-at[smallest]-bt[smallest];
-
-
-            }
-
         }
-
-
+        rt[smallest]--;
+        if(rt[smallest]==0)
+        {
+            remain--;
+            cout<<"  P:"<<smallest+1<<"\t|\t    "<<time+1-at[smallest]<<"\t\t|\t"<<time+1-at[smallest]-bt[smallest]<<"\n";
+            sum_wait+=time+1-at[smallest];
+            sum_turnaround+=time+1-at[smallest]-bt[smallest];
+        }
     }
-    cout<<"\nAverage Waiting Time:"<<sum_wait*1.0/nop;
-    cout<<"\nAverage TurnArund Time : "<<sum_tt*1.0/nop<<endl;
-
-    
-
-
-
-    
-return 0;
+    cout<<"\nAverage Waiting Time: "<<sum_wait*1.0/n;
+    cout<<"\nAverage Turn Around Time: "<<sum_turnaround*1.0/n<<endl;
+    return 0;
 }
